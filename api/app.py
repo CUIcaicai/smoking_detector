@@ -31,7 +31,7 @@ if StrictVersion(tf.__version__) < StrictVersion('1.12.0'):
 from smoking_detector.utils.utils import ops as utils_ops
 from smoking_detector.utils.utils import label_map_util
 from smoking_detector.utils.utils import visualization_utils as vis_util
-import smoking_detector.utils.util as util
+# import smoking_detector.utils.util as util
 
 #from smoking_detector.smoking_detector import resnetPredictor
 from smoking_detector.networks.resnet import resnet
@@ -111,11 +111,9 @@ def smoking_detection():
     #response = requests.get(url)
     image_np = _load_image()
     model = resnet()
-    model.load_weights('../smoking_detector/weights/latest_model_weights.h5')
+    model.load_weights('smoking_detector/weights/latest_model_weights.h5')
     pred = model.predict_classes(image_np)
-    #percent = 0
-
-    return jsonify({'class:': str(pred)})#, 'percent:': float(perc)})
+    return jsonify({'class:': str(pred)}) #, 'percent:': float(perc)})
 
 
 @app.route('/obj_detect', methods=['GET'])#, 'POST'])

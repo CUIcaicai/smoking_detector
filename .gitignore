@@ -1,6 +1,6 @@
 .pytest_cache/
 node_modules/
-.serverless/*
+.serverless/
 .requirements.zip
 android/
 mockup.py.bak
@@ -11,3 +11,9 @@ latest_model_weights.h5
 .ipynb_checkpoints
 __pycache__/
 *.pyc
+*.h5
+*.pbtxt
+*.ckpt.meta*
+*.ckpt.index*
+*.ckpt.data*
+*.pb
