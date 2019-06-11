@@ -80,7 +80,7 @@ def _load_label(label_file):
 
 
 # Modified to use PIL instead of opencv-python
-def _load_image():#dim=4):
+def _load_image():
     if request.method == 'GET':
         print('GET')
         image_url = request.args.get('image_url')
@@ -96,11 +96,8 @@ def _load_image():#dim=4):
 
 # INPUT: image in PIL format
 # OUTPUT: image in np format.
-def _load_image_into_numpy_array(image):##, dim=4):
-  (im_width, im_height) = image.size
-  #if dim == 4:
-  return np.array(image.getdata()).reshape(
-        (1, im_height, im_width, 3)).astype(np.uint8)
+def _load_image_into_numpy_array(image):
+  return np.array(image.getdata()).reshape((1, im_height, im_width, 3)).astype(np.uint8)
 """  elif dim == 3:
       return np.array(image.getdata()).reshape(
         (im_height, im_width, 3)).astype(np.uint8)

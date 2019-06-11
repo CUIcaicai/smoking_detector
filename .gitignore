@@ -17,3 +17,4 @@ __pycache__/
 *.ckpt.index*
 *.ckpt.data*
 *.pb
+*.jpg
