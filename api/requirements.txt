@@ -9,3 +9,11 @@ pafy==0.5.4
 tensorflow==1.13.1
 youtube-dl==2019.6.8
 zipp==0.5.1
+Pillow==6.0.0
+numpy==1.16.4
+numpydoc==0.8.0
+pafy==0.5.4
+youtube-dl==2019.6.8
+requests==2.20.0
+matplotlib==3.0.3
+tqdm==4.32.1
