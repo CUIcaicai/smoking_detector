@@ -97,7 +97,8 @@ def _load_image():
 # INPUT: image in PIL format
 # OUTPUT: image in np format.
 def _load_image_into_numpy_array(image):
-  return np.array(image.getdata()).reshape((1, im_height, im_width, 3)).astype(np.uint8)
+  (im_width, im_height) = image.size
+  return np.array(image.getdata()).reshape((im_height, im_width, 3)).astype(np.uint8)
 """  elif dim == 3:
       return np.array(image.getdata()).reshape(
         (im_height, im_width, 3)).astype(np.uint8)
@@ -107,6 +108,7 @@ def _load_image_into_numpy_array(image):
 def smoking_detection():
     #response = requests.get(url)
     image_np = _load_image()
+    image_np = image_np.reshape((1,) + image_np.shape)
     model = resnet()
     model.load_weights('smoking_detector/weights/latest_model_weights.h5')
     pred = model.predict_classes(image_np)
