@@ -13,6 +13,7 @@ WORKDIR /repo
 
 # Copy only the relevant directories to the working diretory
 COPY smoking_detector/ ./smoking_detector
+COPY ../models/* ./smoking_detector/weights/
 COPY api/ ./api
 
 # Install Python dependencies
