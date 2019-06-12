@@ -33,8 +33,10 @@ from smoking_detector.utils.utils import label_map_util
 from smoking_detector.utils.utils import visualization_utils as vis_util
 # import smoking_detector.utils.util as util
 
-#from smoking_detector.smoking_detector import resnetPredictor
-from smoking_detector.networks.resnet import resnet
+# from smoking_detector.smoking_detector import resnetPredictor
+# from smoking_detector.networks.resnet import resnet
+from smoking_detector.networks.austinnet import austinnet
+
 
 PATH_TO_FROZEN_GRAPH = 'smoking_detector/weights/ssd_mobilenet_v1_coco_2017_11_17/frozen_inference_graph.pb'
 PATH_TO_LABELS = 'smoking_detector/datasets/mscoco_label_map.pbtxt'
@@ -108,9 +110,11 @@ def _load_image_into_numpy_array(image):
 def smoking_detection():
     #response = requests.get(url)
     image_np = _load_image()
-    image_np = image_np.reshape((1,) + image_np.shape)
-    model = resnet()
-    model.load_weights('smoking_detector/weights/latest_model_weights.h5')
+    # image_np = image_np.reshape((1,) + image_np.shape)
+    # model = resnet()
+    # model.load_weights('smoking_detector/weights/latest_model_weights.h5')
+    model = austinnet(image_np.shape) # expecting (image_size,image_size,3)
+    model.load_weights('smoking_detector/weights/06_12_19_model.h5')
     pred = model.predict_classes(image_np)
     return jsonify({'class:': str(pred)}) #, 'percent:': float(perc)})
 
